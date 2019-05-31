@@ -1,0 +1,27 @@
+<div class="example-container">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+    <ng-container *ngIf="data.length > 0 else noProducts">
+      <div *ngFor="let item of data">
+        <mat-card class="card mat-elevation-z8">
+            <img mat-card-image [src]="item.prod_img" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <h3>{{item.prod_name}} </h3>
+            <p>Precio: ${{item.prod_price}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Agregar al carrito</button>
+            <button mat-button [routerLink]="[ '/product-details/', item._id ]"> Detalles </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+
+</div>
+
+<div>
+    <button mat-fab class="flotante" [routerLink]="[ '/product-add']"><mat-icon>add</mat-icon></button>
+</div>
+  
